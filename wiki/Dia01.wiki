@@ -51,16 +51,16 @@ A unidade básica de configuração do Maven é um arquivo chamado pom.xml, que 
 
 Que contém apenas a identificação do projeto, e uma informação a mais: modelVersion, que é a identificação da versão do arquivo pom.xml e deve ser sempre 4.0.0. A identificação do projeto consiste em três informações:
 
-groupId: um identificador da empresa/grupo ao qual o projeto pertence. Geralmente o nome do site da empresa/grupo ao contrário. Ex: br.ufpi.
-artifactId: o nome do projeto. Ex: teste.
-version: a versão atual do projeto. Ex: 0.0.1-SNAPSHOT.
+*groupId*: um identificador da empresa/grupo ao qual o projeto pertence. Geralmente o nome do site da empresa/grupo ao contrário. Ex: br.ufpi.
+*artifactId*: o nome do projeto. Ex: teste.
+*version*: a versão atual do projeto. Ex: 0.0.1-SNAPSHOT.
 
 = Criação de um projeto web utilizando Maven =
 
-	* Eclipse:
+	* *Eclipse*:
 		File => New => Maven Project => Selecionar opção para "simple project" para não usar nenhum ArcheType (planta) de projeto => Adicionar informações (ArtifactId, GroupId, Version, Package)
 	
-	* Linha de Comando:
+	* *Linha de Comando*:
 		mvn archetype:generate \
 			-DarchetypeGroupId=org.apache.maven.archetypes \
 			-DarchetypeArtifactId=maven-archetype-webapp \
@@ -71,12 +71,12 @@ version: a versão atual do projeto. Ex: 0.0.1-SNAPSHOT.
 
 	Agora com um projeto Maven já preparado, vamos para a principal funcionalidade: o build. O build do Maven é baseado no conceito de ciclo de vida: o processo de construção e distribuição da sua aplicação é dividido em partes bem definidas chamadas fases, seguindo um ciclo. O ciclo padrão é o seguinte:
 
-	*compile* – compila o código fonte do projeto
-	*test* – executa os testes unitários do código compilado, usando uma ferramenta de testes unitários, como o junit.
-	*package* – empacota o código compilado de acordo com o empacotamento escolhido, por exemplo, em JAR.
-	*integration-test* – processa e faz o deploy do pacote em um ambiente onde os testes de integração podem ser rodados.
-	*install* – instala o pacote no repositório local, para ser usado como dependência de outros projetos locais
-	*deploy* – feito em ambiente de integração ou de release, copia o pacote final para um repositório remoto para ser compartilhado entre desenvolvedores e projetos
+	* *compile* – compila o código fonte do projeto
+	* *test* – executa os testes unitários do código compilado, usando uma ferramenta de testes unitários, como o junit.
+	* *package* – empacota o código compilado de acordo com o empacotamento escolhido, por exemplo, em JAR.
+	* *integration-test* – processa e faz o deploy do pacote em um ambiente onde os testes de integração podem ser rodados.
+	* *install* – instala o pacote no repositório local, para ser usado como dependência de outros projetos locais
+	* *deploy* – feito em ambiente de integração ou de release, copia o pacote final para um repositório remoto para ser compartilhado entre desenvolvedores e projetos
 
 Obs: O ciclo default acima não se limita apenas as estas etapas, vide referencia de documentação.
 
@@ -89,22 +89,22 @@ Escopo de uma dependencia é usado para limitar a transitividade de uma dependê
 
 Abaixo podemos ver os 6 escopos disponíveis:
 
-	*compile*
+	* *compile*
 	Esse é o escopo padrão, usado quando nenhum escopo é definido. Dependencias com o escopo "compile" estão disponíveis em todos os classpaths de um projeto.
 
-	*provided*
+	* *provided*
 	Esse escopo é muito parecido com o "compile", porém espera que alguem provenha a dependency em runtime, seja a JDK ou o container da aplicação.
 
-	*runtime*
+	* *runtime*
 	Este escopo indica que a dependencia não é requerida para compilação, mas é para execução.
 
-	*test*
+	* *test*
 	Este escopo indica que a dependencia não é requerida para o uso normal da aplicação, e é somente disponível para a compilação/execução de testes.
 
-	*system*
+	* *system*
 	Este escopo é similar ao "provided", com a diferenção que você tem que prover o JAR que contenha a dependencia explicitamente.
 
-	*import* (disponível apenas nas versão do Maven 2.0.9 or superior)
+	* *import* (disponível apenas nas versão do Maven 2.0.9 or superior)
 
 
 http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope
@@ -112,7 +112,7 @@ http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism
 
 = Plugins =
 
-*maven-compile-plugin*
+ * *maven-compile-plugin*
 
 	documentação:
 	http://maven.apache.org/plugins/maven-compiler-plugin/
@@ -120,7 +120,7 @@ http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism
 	referencia de uso:
 	http://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html
 
-*jboss-as-maven-plugin*
+ * *jboss-as-maven-plugin*
 	
 	documentação:
 	https://docs.jboss.org/jbossas/7/plugins/maven/latest/
@@ -128,7 +128,7 @@ http://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism
 	referencia de uso:
 	https://docs.jboss.org/jbossas/7/plugins/maven/latest/examples/deployment-example.html
 	
-*maven-glassfish-plugin*
+ * *maven-glassfish-plugin*
 	
 	documentação:
 	https://maven-glassfish-plugin.java.net/
