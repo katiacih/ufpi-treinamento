@@ -16,8 +16,8 @@ O Maven é uma ferramenta de gerenciamento, construção e implantação de proj
 
 = Configuração, Instalação e Teste =
 
-* *Maven:* http://maven.apache.org/download.html
-* *Java 7:* http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
+*Maven:* http://maven.apache.org/download.html
+*Java 7:* http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html
 
 = Configurar variáveis de ambiente =
 
