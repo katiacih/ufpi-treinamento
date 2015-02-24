@@ -42,12 +42,14 @@ No terminal (CMD) executar o seguinte comando:
 
 A unidade básica de configuração do Maven é um arquivo chamado pom.xml, que deve ficar na raiz do seu projeto. Ele é um arquivo conhecido como Project Object Model: lá você declara a estrutura, dependências e características do seu projeto.
 
+{{{
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.ufpi</groupId>
   <artifactId>teste</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </project>
+}}}
 
 Que contém apenas a identificação do projeto, e uma informação a mais: modelVersion, que é a identificação da versão do arquivo pom.xml e deve ser sempre 4.0.0. A identificação do projeto consiste em três informações:
 
