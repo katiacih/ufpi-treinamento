@@ -1,4 +1,4 @@
-#summary Dia 01 e Maven.
+#summary Maven: Seu funcionamento e suas funcionalidades
 #labels maven,day01
 
 = Maven =
