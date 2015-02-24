@@ -21,15 +21,15 @@ O Maven é uma ferramenta de gerenciamento, construção e implantação de proj
 
 = Configurar variáveis de ambiente =
 
-M2_HOME="Diretorio/de/instalação"
-JAVA_HOME="Diretorio/de/instalação"
+ * M2_HOME="Diretorio/de/instalação"
+ * JAVA_HOME="Diretorio/de/instalação"
 
 Adicionar as variáveis acima ao "Path" do sistema acrescidos do diretório "bin".
 
-Ex:
+*Ex:*
 
-*windows:* ...;%M2_HOME%\bin
-*linux:* PATH=$PATH:$M2_HOME\bin
+ * *windows:* ...;%M2_HOME%\bin
+ * *linux:* PATH=$PATH:$M2_HOME\bin
 
 = Verificar funcionamento = 
 
