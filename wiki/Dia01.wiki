@@ -35,8 +35,8 @@ Adicionar as variáveis acima ao "Path" do sistema acrescidos do diretório "bin
 
 No terminal (CMD) executar o seguinte comando:
 
-*java -version*
-*mvn --version*
+ * *java -version*
+ * *mvn --version*
 
 = Estrutura =
 
