@@ -7,6 +7,11 @@
   * *Windows*: Next, Next, Next and Install =D
   * *Linux*: apt-get install mysql-server
 
+ * *Commandos Básicos:*
+  * {{{ mysql -u USUAURIO -p }}}
+  * {{{ create database NOME_DO_BANCO; }}}
+  * {{{ use NOME_DO_BANCO }}}
+
 = Jboss Wildfly =
 	
 	* *Instalação:* http://wildfly.org/downloads/
