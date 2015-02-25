@@ -8,9 +8,21 @@
   * *Linux*: apt-get install mysql-server
 
  * *Commandos Básicos:*
-  * {{{ mysql -u USUAURIO -p }}}
-  * {{{ create database NOME_DO_BANCO; }}}
-  * {{{ use NOME_DO_BANCO }}}
+
+{{{ 
+mysql -u USUAURIO -p 
+}}}
+Utilizado para logar no console administrativo do Mysql, e ao executar o comando será solicitado a senha para acesso. Obs: o usuário e senha são os mesmos configurados na instalação do BD (Banco de Dados).
+
+{{{ 
+create database NOME_DO_BANCO; 
+}}}
+Criar um banco de dados
+
+{{{ 
+use NOME_DO_BANCO; 
+}}}
+Passar a utilizar um banco de dados, necessário para execuções de comandos em um banco de dados específicos
 
 = Jboss Wildfly =
 	
