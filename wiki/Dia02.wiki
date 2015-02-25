@@ -41,7 +41,7 @@ Software Configuration Management
 === Boas Práticas de utilização do SVN ===
  * Sempre _commit_ com comentários objetivos.
  * Sempre faça _synchronize_ antes de efetuar seus _commits_ e _updates_
- * Tela cautela ao utilizar as opções de _override and commit_ e _override and update_, pois as mesma são perigosas e podem lhe causar problemas.
+ * Tenha cautela ao utilizar as opções de _override and commit_ e _override and update_, pois as mesma são perigosas e podem lhe causar problemas.
  * Mantenha a calma, pois você agora está usando um controlador de versões e na maioria dos casos tudo pode ser recuperado.
 
 === SVN no Eclipse ===
