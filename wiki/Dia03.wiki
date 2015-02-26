@@ -175,12 +175,12 @@ EntityManager em = emf.createEntityManager();
 
 == Principais métodos do EntityManager ==
 
- * persist: usado para salvar objetos na base de dados 
- * merge: usado para atualizar objetos na base de dados
- * refresh: usado para sincronizar o objeto com a base de dados.
- * remove: usado para remover um objeto da base de dados.
- * find: usado para buscar um objeto na base de dados através da chave primária.
- * getReference : usado para obter um referencia para um objeto na base de dados.
+ * *persist*: usado para salvar objetos na base de dados 
+ * *merge*: usado para atualizar objetos na base de dados
+ * *refresh*: usado para sincronizar o objeto com a base de dados.
+ * *remove*: usado para remover um objeto da base de dados.
+ * *find*: usado para buscar um objeto na base de dados através da chave primária.
+ * *getReference*: usado para obter um referencia para um objeto na base de dados.
 
 == Referências == 
  
