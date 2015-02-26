@@ -8,6 +8,9 @@
 
 	<build>
 		<plugins>
+
+			<!-- plugin para modificar a versão do java no projeto e configurar a 
+				geração de meta-modelos no JPA -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -15,8 +18,13 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+<!-- 					<compilerArguments> -->
+<!-- 						<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor> -->
+<!-- 					</compilerArguments> -->
 				</configuration>
 			</plugin>
+
+			<!-- plugin para informar ao maven a não necessidade de um arquivo web.xml -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -26,6 +34,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- plugin para deploy da aplicação no wildfly -->
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
@@ -35,26 +44,48 @@
 	</build>
 
 	<dependencies>
+
+		<!-- adiciona suporte para utilização de teste com JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- adiciona suporte para JPA com a implementação do hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.8.Final</version>
 		</dependency>
+
+		<!-- drive para utilização do banco de dados MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.34</version>
 		</dependency>
+
+		<!-- adiciona suporte para logs no projeto -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.5</version>
 		</dependency>
+
+		<!-- adiciona suporte para geração de meta-modelos no JPA -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-jpamodelgen</artifactId> -->
+<!-- 			<version>4.3.8.Final</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.1</version>
+		</dependency>
+
 	</dependencies>
 </project>
