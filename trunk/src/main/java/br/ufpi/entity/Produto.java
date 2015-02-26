@@ -1,6 +1,8 @@
 package br.ufpi.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,8 @@ public class Produto {
 
 	private Double precoUnitario;
 
-	private String tipo;
+	@Enumerated(EnumType.ORDINAL)
+	private TipoProduto tipo;
 
 	private String descricao;
 
@@ -52,7 +55,7 @@ public class Produto {
 	/**
 	 * @return the tipo
 	 */
-	public String getTipo() {
+	public TipoProduto getTipo() {
 		return tipo;
 	}
 
@@ -60,7 +63,7 @@ public class Produto {
 	 * @param tipo
 	 *            the tipo to set
 	 */
-	public void setTipo(String tipo) {
+	public void setTipo(TipoProduto tipo) {
 		this.tipo = tipo;
 	}
 
