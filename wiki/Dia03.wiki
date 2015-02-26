@@ -180,9 +180,22 @@ Produto produto = ...
 String consultaJPQL = ...
 List<Produto> produtos = null;
 
+EntityTransaction tx = em.getTransaction();
+
+try {
+
+tx.begin(); // inicia uma transação, transação entra no estado de ativa
+
 em.persist(produto);
 em.merge(produto);
 em.remove(produto);
+
+tx.commit(); // efetiva uma transação, transação deixa de ser ativa
+
+} finally {
+   if (tx.isActive()) // verifica se a transação ainda está ativa
+      tx.rollback(); // desfaz uma transação, deixa de ser ativa
+}
 
 produto = em.find(Produto.class, 1);
 produto = em.getReference(Produto.class, 1);
@@ -196,8 +209,12 @@ List<Object[]> resultado = queryNativa.getResultList();
 TypedQuery<Produto> typedQuery = em.createQuery(consultaJPQL, Produto.class);
 produtos = typedQuery.getResultList();
 
+em.close(); // fecha o EntityManager, liberando os recurso alocados em memória.
+emf.close() // fecha a EntityManagerFactory, liberando os recurso alocados em memória.
+
 }}}
 
+ * *getTransaction*: usado para obter uma transação, esta necessária para a execução do métodos de persist, merge e remove, consultas podem ser feitas sem uma transação ativa.
  * *persist*: usado para salvar objetos na base de dados 
  * *merge*: usado para atualizar objetos na base de dados
  * *refresh*: usado para sincronizar o objeto com a base de dados.
