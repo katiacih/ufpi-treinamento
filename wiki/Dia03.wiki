@@ -1,4 +1,6 @@
+#summary Introdução ao JPA
 #labels day03,jpa
+
 = JPA (Java Persistence API) =
 
  * Persistence.xml
