@@ -5,6 +5,7 @@
 
  * Persistence.xml
  * Entity Class
+ * EntityManager e EntityManagerFactory
 
 == Configurando o persistence.xml ==
 
@@ -153,6 +154,33 @@ Relacionamento por padrão executam carregamento retardado (Lazy Loading), já c
 }}}
  * *@NamedEntityGraph* => permite alterar o tipo de inicialização dos atributos definido na classe (Lazy ou Eager)
  * *@Index* => Permite a criação de indice no banco de dados.
+
+== Obtendo uma EntityManagerFactory ==
+
+Para utilização do EntityManagerFactory fora do servidor de aplicação, usamos da seguinte forma:
+
+{{{
+EntityManagerFactory emf = Persistence.createEntityManagerFactory("hibernate-jpa-mysql");
+}}}
+
+Lembrando que o parâmetro para a chamada do método acima é o nome configurado na unidade de persistencia (*persistence-unit) dentro do arquivo *persistence.xml*.
+
+== Obtendo um EntityManager ==
+
+De posse da EntityManagerFactory chamamos o método _createEntityManager_
+
+{{{
+EntityManager em = emf.createEntityManager();
+}}}
+
+== Principais métodos do EntityManager ==
+
+ * persist: usado para salvar objetos na base de dados 
+ * merge: usado para atualizar objetos na base de dados
+ * refresh: usado para sincronizar o objeto com a base de dados.
+ * remove: usado para remover um objeto da base de dados.
+ * find: usado para buscar um objeto na base de dados através da chave primária.
+ * getReference : usado para obter um referencia para um objeto na base de dados.
 
 == Referências == 
  
