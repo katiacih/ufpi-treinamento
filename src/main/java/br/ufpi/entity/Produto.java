@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-// @Table(name = "produto")
 public class Produto {
 
 	@Id
