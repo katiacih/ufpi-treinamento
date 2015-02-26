@@ -175,12 +175,38 @@ EntityManager em = emf.createEntityManager();
 
 == Principais métodos do EntityManager ==
 
+{{{
+Produto produto = ...
+String consultaJPQL = ...
+List<Produto> produtos = null;
+
+em.persist(produto);
+em.merge(produto);
+em.remove(produto);
+
+produto = em.find(Produto.class, 1);
+produto = em.getReference(Produto.class, 1);
+
+Query queryJPQL = em.createQuery(consultaJPQL);
+produtos = (List<Produto>) queryJPQL.getResultList();
+
+Query queryNativa = em.createNativeQuery(consultaNativa);
+List<Object[]> resultado = queryNativa.getResultList();
+
+TypedQuery<Produto> typedQuery = em.createQuery(consultaJPQL, Produto.class);
+produtos = typedQuery.getResultList();
+
+}}}
+
  * *persist*: usado para salvar objetos na base de dados 
  * *merge*: usado para atualizar objetos na base de dados
  * *refresh*: usado para sincronizar o objeto com a base de dados.
  * *remove*: usado para remover um objeto da base de dados.
  * *find*: usado para buscar um objeto na base de dados através da chave primária.
  * *getReference*: usado para obter um referencia para um objeto na base de dados.
+ * *createQuery*: usado para obter uma instancia de Query para executar consultas via JPQL, seu retorno é uma lista do objeto que se está procurando.
+ * *createQuery (dois parametros)*: mesma finalidade acima, com uma pequena diferença que também é passado a classe de retorno dos objetos no momento da instanciação, afim de trazer o resultado com a tipagem correta, evitando o uso de casting's.
+ * *createNativeQuery*: usado para efetuar consultas nativas do banco, seu retorno padrão é uma Lista de Array de Objetos (List<Object[]>).
 
 == Referências == 
  
