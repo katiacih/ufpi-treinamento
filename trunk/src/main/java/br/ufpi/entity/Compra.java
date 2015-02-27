@@ -6,12 +6,10 @@ package br.ufpi.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -25,22 +23,33 @@ import javax.persistence.TemporalType;
 public class Compra {
 
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private double valor;
 
 	@ManyToOne
-	private Cliente c;
+	private Cliente cliente;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
 	@OneToMany
-	private List<Produto> listaProdutos;
+	private List<Produto> produtos;
 
-	@Basic
 	private String tipoPagamento;
+
+	public Compra() {
+
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public Date getData() {
 		return data;
@@ -50,12 +59,12 @@ public class Compra {
 		this.data = data;
 	}
 
-	public List<Produto> getListaProdutos() {
-		return listaProdutos;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setListaProdutos(List<Produto> listaProdutos) {
-		this.listaProdutos = listaProdutos;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 	public String getTipoPagamento() {
@@ -66,14 +75,6 @@ public class Compra {
 		this.tipoPagamento = tipoPagamento;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public double getValor() {
 		return valor;
 	}
@@ -82,11 +83,11 @@ public class Compra {
 		this.valor = valor;
 	}
 
-	public Cliente getC() {
-		return c;
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setC(Cliente c) {
-		this.c = c;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 }

@@ -11,8 +11,8 @@ import javax.persistence.Id;
 public class Produto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private Double precoUnitario;
 
@@ -21,11 +21,11 @@ public class Produto {
 
 	private String descricao;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -37,32 +37,18 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	/**
-	 * @return the precoUnitario
-	 */
 	public Double getPrecoUnitario() {
 		return precoUnitario;
 	}
 
-	/**
-	 * @param precoUnitario
-	 *            the precoUnitario to set
-	 */
 	public void setPrecoUnitario(Double precoUnitario) {
 		this.precoUnitario = precoUnitario;
 	}
 
-	/**
-	 * @return the tipo
-	 */
 	public TipoProduto getTipo() {
 		return tipo;
 	}
 
-	/**
-	 * @param tipo
-	 *            the tipo to set
-	 */
 	public void setTipo(TipoProduto tipo) {
 		this.tipo = tipo;
 	}
