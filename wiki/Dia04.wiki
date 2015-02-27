@@ -123,4 +123,4 @@ Lembretes:
  * *Tutorial JSF e Primefaces*: http://www.caelum.com.br/apostila-java-testes-jsf-web-services-design-patterns/introducao-ao-jsf-e-primefaces/
  * *Componentes Primafaces:* http://www.primefaces.org/showcase/
  * *Tutorial Primefaces:* http://www.primefaces.org/docs/guide/primefaces_user_guide_5_1.pdf
- * *EL (Expression Language):* http://docs.oracle.com/javaee/6/tutorial/doc/gjddd.html
+ * *EL (Expression Language):* http://docs.oracle.com/javaee/7/tutorial/jsf-el.htm#GJDDD
