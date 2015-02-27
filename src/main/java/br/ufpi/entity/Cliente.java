@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -16,16 +17,16 @@ import javax.persistence.Version;
 public class Cliente {
 
 	@Id
-	@GeneratedValue
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private int cpf;
 	private String nome;
 	private String email;
-	private String sexo;
+	private String genero;
 
 	@Temporal(TemporalType.DATE)
-	private Date data_nascimento;
+	private Date dataNascimento;
 
 	private String telefone;
 
@@ -34,17 +35,21 @@ public class Cliente {
 
 	private String senha;
 
-	@OneToMany(mappedBy = "c")
+	@OneToMany(mappedBy = "cliente")
 	private List<Compra> compras;
 
 	@Version
 	private int versao;
 
-	public int getId() {
+	public Cliente() {
+
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -72,20 +77,20 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getSexo() {
-		return sexo;
+	public String getGenero() {
+		return genero;
 	}
 
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
-	public Date getData_nascimento() {
-		return data_nascimento;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setData_nascimento(Date data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getTelefone() {
