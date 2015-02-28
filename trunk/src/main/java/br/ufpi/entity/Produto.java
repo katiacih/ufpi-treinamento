@@ -1,13 +1,17 @@
 package br.ufpi.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.ufpi.validadores.ValidadorProduto;
+
 @Entity
+@EntityListeners({ ValidadorProduto.class })
 public class Produto {
 
 	@Id

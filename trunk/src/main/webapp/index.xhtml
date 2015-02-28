@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3c.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 
 </h:head>
 <h:body>
-	<p:editor />
+	<h:form id="form">
+		<p:messages showDetail="true" showSummary="true" />
+		<p:outputLabel value="Descrição:" />
+		<p:inputTextarea value="#{x.produto.descricao}" id="desc" required="true" />
+		<p:message for="desc" showDetail="true" showSummary="true" />
+		<br />
+		<p:outputLabel value="Preço Unitário:" />
+		<p:inputText value="#{x.produto.precoUnitario}" />
+		<br />
+		<p:outputLabel value="Tipo:" />
+		<p:selectOneMenu value="#{x.produto.tipo}" >
+            <f:selectItem itemLabel="Um" itemValue="UM" />
+            <f:selectItem itemLabel="Dois" itemValue="DOIS" />
+            <f:selectItem itemLabel="Tres" itemValue="TRES" />
+		</p:selectOneMenu>
+		<br />
+		<p:commandButton value="Criar Produto" action="#{x.salvar}"
+		 update="@form" />
+	</h:form>
 </h:body>
 </html>

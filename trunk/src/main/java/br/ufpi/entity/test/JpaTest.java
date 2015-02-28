@@ -1,14 +1,11 @@
 package br.ufpi.entity.test;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnitUtil;
-import javax.persistence.PersistenceUtil;
-import javax.persistence.Query;
+
+import br.ufpi.entity.Produto;
 
 public class JpaTest {
 
@@ -17,26 +14,29 @@ public class JpaTest {
 				.createEntityManagerFactory("hibernate-jpa-mysql");
 		EntityManager em = emf.createEntityManager();
 
-		PersistenceUtil pu = Persistence.getPersistenceUtil();
-		PersistenceUnitUtil puu = emf.getPersistenceUnitUtil();
+		// PersistenceUtil pu = Persistence.getPersistenceUtil();
+		// PersistenceUnitUtil puu = emf.getPersistenceUnitUtil();
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		
+
 		// Query query =
 		// em.createQuery("SELECT p FROM Produto p WHERE p.precoUnitario < 7");
 
-		Query query2 = em
-				.createNativeQuery("Select * from Produto where precoUnitario < 7");
-		List<Object[]> list = query2.getResultList();
+		// Query query2 = em
+		// .createNativeQuery("Select * from Produto where precoUnitario < 7");
+		// List<Object[]> list = query2.getResultList();
+		//
+		// for (Object[] objects : list) {
+		// for (Object object : objects) {
+		// System.out.print(object);
+		// System.out.print(" ,");
+		// }
+		// System.out.println();
+		// }
 
-		for (Object[] objects : list) {
-			for (Object object : objects) {
-				System.out.print(object);
-				System.out.print(" ,");
-			}
-			System.out.println();
-		}
+		Produto produto = em.find(Produto.class, 4);
+		System.out.println(produto.getDescricao());
 
 		// List<Produto> produtos = query.getResultList();
 		//
