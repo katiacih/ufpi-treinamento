@@ -1,5 +1,5 @@
 #summary JPA no servidor de aplicações, EJB e mais Primefaces
-#labels day03,ejb,jpa,Featured
+#labels day03,ejb,jpa
 
 = Configurando JPA no servidor de aplicações =
 	
