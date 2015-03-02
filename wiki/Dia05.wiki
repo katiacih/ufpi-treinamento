@@ -187,7 +187,7 @@ public class ManagerBean {
 	* a maior parte dos componentes do Primefaces possuem o atributo "id" que serve para identificar unicamente cada componente, necessário quando se quer fazer referencia a eles em um atributo "update", por exemplo.
 	* a maior parte dos componentes do Primefaces tem um atributo "update" que é utilizado para atualizar (renderizar novamente) outros componentes através do identificador.
 
-*Showcase dos componentes:* www.primefaces.org/showcase
+*Showcase dos componentes:* http://www.primefaces.org/showcase
 	
 == Configurações extras ==
 	
