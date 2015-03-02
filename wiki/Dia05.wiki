@@ -169,6 +169,8 @@ public class ManagerBean {
 
 }
 }}}
+
+*EJB Tutorial:* http://docs.oracle.com/javaee/7/tutorial/partentbeans.htm#BNBLR
 	
 == Primefaces ==
 	
