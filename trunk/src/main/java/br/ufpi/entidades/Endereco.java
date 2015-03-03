@@ -1,4 +1,4 @@
-package br.ufpi.entity;
+package br.ufpi.entidades;
 
 import javax.persistence.Embeddable;
 

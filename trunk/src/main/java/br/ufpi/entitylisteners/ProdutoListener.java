@@ -1,4 +1,4 @@
-package br.ufpi.validadores;
+package br.ufpi.entitylisteners;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -6,9 +6,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
-import br.ufpi.entity.Produto;
+import br.ufpi.entidades.Produto;
 
-public class ValidadorProduto {
+public class ProdutoListener {
 
 	@PersistenceContext
 	private EntityManager em;
