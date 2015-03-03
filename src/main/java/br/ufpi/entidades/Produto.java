@@ -1,4 +1,4 @@
-package br.ufpi.entity;
+package br.ufpi.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -8,10 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.ufpi.validadores.ValidadorProduto;
+import br.ufpi.entitylisteners.ProdutoListener;
 
 @Entity
-@EntityListeners({ ValidadorProduto.class })
+@EntityListeners({ ProdutoListener.class })
 public class Produto {
 
 	@Id

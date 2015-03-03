@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufpi.entity;
+package br.ufpi.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

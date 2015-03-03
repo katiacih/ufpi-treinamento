@@ -4,16 +4,20 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.ufpi.entity.Produto;
+import br.ufpi.entidades.Produto;
 
 @Stateless
-public class PrimeiroEJB {
+public class ProdutoEJB {
 
 	@PersistenceContext
 	private EntityManager em;
 
+	public void deletar(Produto produto) {
+		em.remove(em.merge(produto));
+	}
+
 	public void salvar(Produto produto) {
-		em.persist(produto);
+		em.merge(produto);
 	}
 
 }

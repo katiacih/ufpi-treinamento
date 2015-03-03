@@ -1,4 +1,4 @@
-package br.ufpi.entity;
+package br.ufpi.entidades;
 
 public enum TipoProduto {
 	
