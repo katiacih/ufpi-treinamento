@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" template="index.xhtml">
+
+	<ui:define name="centro">
+		<h:form id="form">
+
+			<p:growl id="growl" showDetail="true" sticky="false" />
+
+			<p:messages showDetail="true" showSummary="true" />
+			<p:panel header="#{com['panel.produto.info']}" closable="false"
+				toggleable="true" toggleSpeed="0">
+
+				<h:panelGrid columns="3">
+					<p:outputLabel value="#{ent['produto.id']}" for="id" />
+					<p:inputText id="id" value="#{produtoBean.produto.id}"
+						disabled="true" />
+					<p:message for="id" />
+
+					<p:outputLabel value="#{ent['produto.descricao']}" for="desc" />
+					<p:inputTextarea value="#{produtoBean.produto.descricao}" id="desc"
+						required="true" />
+					<p:message for="desc" />
+
+					<p:outputLabel value="#{ent['produto.tipo']}" for="tipo" />
+					<p:selectOneMenu value="#{produtoBean.produto.tipo}" id="tipo"
+						required="true">
+						<f:selectItem noSelectionOption="true" />
+						<f:selectItem itemLabel="Um" itemValue="UM" />
+						<f:selectItem itemLabel="Dois" itemValue="DOIS" />
+						<f:selectItem itemLabel="Tres" itemValue="TRES" />
+					</p:selectOneMenu>
+					<p:message for="tipo" />
+
+					<p:outputLabel value="#{ent['produto.precoUnitario']}"
+						for="pUnitario" />
+					<p:inputText value="#{produtoBean.produto.precoUnitario}"
+						id="pUnitario" required="true" />
+					<p:message for="pUnitario" />
+				</h:panelGrid>
+			</p:panel>
+
+			<p:spacer />
+
+			<div style="text-align: center">
+				<p:commandButton value="#{com['botao.salvar']}"
+					action="#{produtoBean.salvar}" update="@form :table"
+					icon="ui-icon-disk" />
+				<p:commandButton value="#{com['botao.cancelar']}"
+					action="#{produtoBean.cancelar}" update="@form :table"
+					icon="ui-icon-cancel" process="@this">
+					<p:resetInput target="form" />
+				</p:commandButton>
+			</div>
+
+		</h:form>
+		<p:spacer />
+		<p:dataTable var="produto" value="#{produtoBean.produtos}"
+			paginator="true" rows="5" paginatorPosition="bottom" lazy="true"
+			id="table">
+			<f:facet name="header">
+				<div style="text-align: left">
+					<h:outputText value="#{com['tabela.produto.cabecalho']}" />
+					: #{produtoBean.produtos.rowCount}
+				</div>
+			</f:facet>
+			<p:column width="90" headerText="#{com['tabela.produto.opcoes']}"
+				style="text-align:center">
+				<p:commandButton action="#{produtoBean.remover(produto)}"
+					icon="ui-icon-trash" process="@this" update="table :form" />
+				<p:commandButton action="#{produtoBean.editar(produto)}"
+					icon="ui-icon-pencil" process="@this" update="table :form" />
+			</p:column>
+			<p:column headerText="#{com['tabela.produto.id']}" width="50"
+				style="text-align:center" sortBy="#{produto.id}">
+				<h:outputText value="#{produto.id}" />
+			</p:column>
+
+			<p:column headerText="#{com['tabela.produto.descricao']}"
+				sortBy="#{produto.descricao}">
+				<h:outputText value="#{produto.descricao}" />
+			</p:column>
+
+			<p:column headerText="#{com['tabela.produto.tipo']}" width="90"
+				style="text-align:center" sortBy="#{produto.tipo}">
+				<h:outputText value="#{produto.tipo}" />
+			</p:column>
+
+			<p:column headerText="#{com['tabela.produto.precoUnitario']}"
+				width="180" style="text-align:right" sortBy="#{produto.preco}">
+				<h:outputText value="#{produto.precoUnitario}">
+					<f:convertNumber pattern="R$ #,##0.00" />
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
