@@ -128,10 +128,10 @@ Podem ser encontradas detalhamente na especificação do JSF: http://download.or
 
 ==ManagedBeans Escopos==
 
- * *@ViewScoped* Mesma instancia enquanto o navegador não atualiza ou mudar de página
+ * *@ViewScoped* Mesma instancia enquanto o navegador não atualizar ou mudar de página
  * *@RequestScoped* A cada nova requisição uma nova instancia será criada
- * *@ApplicationScoped* Enquanto o servidor estiver "ligado" a mesma instancia será utilizada.
- * *@SessionScoped* Enquanto durar a sessão a instancia do bean será utilizada.
+ * *@ApplicationScoped* Enquanto o servidor estiver "ligado" a mesma instancia será utilizada
+ * *@SessionScoped* Enquanto durar a sessão, a instancia do bean será utilizada.
 
 Obs: Todos os escopos vistos foram do pacote: *javax.faces.bean*
 
