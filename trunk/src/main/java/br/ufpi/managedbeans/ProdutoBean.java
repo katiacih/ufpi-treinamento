@@ -13,8 +13,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import org.primefaces.component.breadcrumb.BreadCrumb;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
+import org.primefaces.model.menu.DefaultMenuItem;
+import org.primefaces.model.menu.DefaultMenuModel;
+import org.primefaces.model.menu.MenuElement;
 
 import br.ufpi.ejbs.ProdutoEJB;
 import br.ufpi.entidades.Produto;
@@ -22,6 +26,8 @@ import br.ufpi.entidades.Produto;
 @ManagedBean
 @ViewScoped
 public class ProdutoBean {
+
+	private DefaultMenuModel model;
 
 	@PersistenceContext
 	private EntityManager em;
@@ -37,8 +43,17 @@ public class ProdutoBean {
 
 	}
 
+	public DefaultMenuModel getModel() {
+		return model;
+	}
+
+	public void setModel(DefaultMenuModel model) {
+		this.model = model;
+	}
+
 	@PostConstruct
 	public void postConstructor() {
+		model = new DefaultMenuModel();
 		produtos = new LazyDataModel<Produto>() {
 
 			private static final long serialVersionUID = 1L;
@@ -65,6 +80,9 @@ public class ProdutoBean {
 	}
 
 	public void remover(Produto produto) {
+		if (produto.getId() == this.produto.getId()) {
+			cancelar();
+		}
 		produtoEJB.deletar(produto);
 	}
 
@@ -99,6 +117,11 @@ public class ProdutoBean {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public void test() {
+		MenuElement item = new DefaultMenuItem("Novo Item","ui-icon-pencil");
+		model.addElement(item);
 	}
 
 }
