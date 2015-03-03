@@ -121,6 +121,31 @@ A configuração pode ser feita de duas maneiras, local e global:
   * *var*
 		Identificador que será usado como referencia nos arquivos .xhtml
 
+{{{
+<application>
+   <resource-bundle>
+      <base-name>entidades</base-name>
+      <var>ent</var>
+   </resource-bundle>
+   <resource-bundle>
+      <base-name>componentes</base-name>
+      <var>com</var>
+   </resource-bundle>
+</application>
+}}}
+
+===Definição de Locale na aplicação===
+
+Através do arquivo faces-config.xml é possível simular a utilização do sistema em outras linguagens, recurso interessante para testar o recurso de internacionalização e definição do locale padrão que sua aplicação irá utilizar.
+
+{{{
+<application>
+   <locale-config>
+      <default-locale>pt_BR</default-locale>
+   </locale-config>
+</application>
+}}}
+
 
 ==Messages de Validação do JSF==
 
