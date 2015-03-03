@@ -6,32 +6,32 @@
 EntityListeners permite você invocar algum código antes ou depois de certas operações de persistencia.
 
 ===Detalhes===
- * @PrePersist
+ * *@PrePersist*
 
 Chamado imediatamente antes que o objeto seja salvo na base de dados.
 
- * @PostPersist
+ * *@PostPersist*
 
 Chamado imediatamente depois que o objeto é salvo na base de dados.
 
- * @PreRemove
+ * *@PreRemove*
 
 Chamado imediatamente antes que o objeto seja removido da base de dados.
 
- * @PostRemove
+ * *@PostRemove*
 
 Chamado imediatamente depois que o objeto é removido da base de dados.
 
- * @PreUpdate
+ * *@PreUpdate*
 
 Chamado imediatamente antes que o objeto seja atualizado.
 
- * @PostUpdate
+ * *@PostUpdate*
 
 Chamado imediatamente depois que o objeto é atualizado.
 
 ===Codigo de Exemplo===
-Para habititar o uso de EntityListeners em uma Entidade, apenas use a anotação @EntityListners na referida classe, através dele você listar as classe que ficarão observando as operações de persistencia sobre a entidade.
+Para habititar o uso de EntityListeners em uma Entidade, apenas use a anotação @EntityListners na referida classe, através dela você listará as classes que ficarão observando as operações de persistencia sobre a entidade.
 
 {{{
 @Entity
@@ -59,18 +59,25 @@ public class ProdutoListener {
         produto.setDataAtualizacao(new Date());
     }
 }
-}}}}
+}}}
 
-No exemplo acima o EntityListener fica observando as operações de persist e update nos objetos da classe produto, e atribui a data da criação e atualização aos objetos antes que eles sejam salvos ou atualizado no banco.
+No exemplo acima o EntityListener fica observando as operações de persist e update nos objetos da classe produto, e atribui a data da criação e atualização aos objetos antes que eles sejam salvos ou atualizados no banco.
 
 
 ==JSF I18N (Internacionalization) = Internacionalização==
 
 Recurso utilizado para padronização de textos (rótulo, nomes, descrições) dentro da aplicação, bem como para tradução dos mesmos em outras linguagens.
 
-===Definindo as arquivos de i18n===
+===Definindo arquivos de i18n===
 
 São arquivo .properties compostos apenas de chaves e valores.
+
+mensagens.properties
+{{{
+ok=Confirmar
+update=Atualizar
+cancel=Cancelar
+}}}
 
 ===Definindo classes de i18n===
 
@@ -94,17 +101,24 @@ public class MensagemBundle extends ResourceBundle {
 
 ===Configurando os arquivos/classes de i18n===
 
-	Local: 	
-		classe: <f:loadBundle var="msg" basename="pacote.da.classe.NomeDaClasse"></f:loadBundle>
-		arquivo: <f:loadBundle var="msg" basename="nomeDoArquivoPropertiesSemExtensao"></f:loadBundle>
-	Global: 
-		faces-config
+A configuração pode ser feita de duas maneiras, local e global:
 
-resource-bundle => identifica recursos que serão usados para internacionalição do sistema, o JSF por padrão já utiliza esse mecanismo para suas mensagens de erros internas, sendo assim possível sobrescrevê-las.
-	
-	base-name
+	* *Local:* 	
+		classe: 
+{{{
+<f:loadBundle var="msg" basename="pacote.da.classe.NomeDaClasse"></f:loadBundle>
+}}}
+		arquivo: 
+{{{
+<f:loadBundle var="msg" basename="nomeDoArquivoPropertiesSemExtensao"></f:loadBundle>
+}}}
+	* *Global:* 
+		Configuração feita dentro do arquivo faces-config.xml através das tag "resource-bundle" e "message-bundle".
+
+ * *resource-bundle* => identifica recursos que serão usados para internacionalição do sistema, o JSF por padrão já utiliza esse mecanismo para suas mensagens de erros internas, sendo assim possível sobrescrevê-las.
+  * *base-name*
 		Nome do arquivo .properties ou FQN (full qualify name) da Classe (pacote+nome da classe), com a restrição que a classe informada deve obrigatoriamente estender ResourceBundle.
-	var
+  * *var*
 		Identificador que será usado como referencia nos arquivos .xhtml
 
 
