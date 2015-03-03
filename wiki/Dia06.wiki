@@ -122,11 +122,20 @@ A configuração pode ser feita de duas maneiras, local e global:
 		Identificador que será usado como referencia nos arquivos .xhtml
 
 
-===Messages de Validação do JSF===
+==Messages de Validação do JSF==
 
 Podem ser encontradas detalhamente na especificação do JSF: http://download.oracle.com/otndocs/jcp/jsf-2_2-fr-spec/index.html
 
-===Componentes===
+==ManagedBeans Escopos==
+
+ * *@ViewScoped* Mesma instancia enquanto o navegador não atualiza ou mudar de página
+ * *@RequestScoped* A cada nova requisição uma nova instancia será criada
+ * *@ApplicationScoped* Enquanto o servidor estiver "ligado" a mesma instancia será utilizada.
+ * *@SessionScoped* Enquanto durar a sessão a instancia do bean será utilizada.
+
+Obs: Todos os escopos vistos foram do pacote: *javax.faces.bean*
+
+==Componentes==
  * datatable
   * column
   * facet
