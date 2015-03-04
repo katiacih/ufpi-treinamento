@@ -115,6 +115,16 @@ De posse do design do relatório (arquivo .jrxml), são necessário os seguinte 
 
 }}}
 
+==Componentes do Primefaces==
+ * *BreadCrumb* => menu de rastro do usuário
+ * *Menubar* => barra de menu do sistema
+ * *ResetInput* => componente para resetar os valores de uma formulário
+
+Obs: 
+ * Componentes do tipo menu obrigatoriamente devem está localizado dentro de um formulário para funcionar
+ * Componentes do tipo butão obrigatoriamente também necessitam de um formulário para funcionar (Exceto quando o mesmo não fizer ação em um ManagedBean)
+ 
+
 
 ==Referências==
  * *Tutorial IReport:* http://www.k19.com.br/artigos/relatorios-em-java-jasperreports-e-irepor/ (pt_BR)
