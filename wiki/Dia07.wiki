@@ -119,7 +119,38 @@ De posse do design do relatório (arquivo .jrxml), são necessário os seguinte 
  * *BreadCrumb* => menu de rastro do usuário
  * *Menubar* => barra de menu do sistema
  * *ResetInput* => componente para resetar os valores de uma formulário
+ * *Layout* => define unidades de layout em uma pagina .xhtml
 
+==Corrigindo conflitos entre componentes==
+Quando utilizando o componentes Layout juntamente com o componente Menubar, notamos que o menu aparece por traz do componente de Layout, impossibilitando a sua utilização. Para resolver esse problema adicionamos o seguinte código CSS em nossa aplicação:
+
+{{{
+<style>
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+</style>
+}}}
+
+===Removendo bordas do componente Layout===
+Afim de proporcionar um visual mais 'clean' (limpo) em nossa aplicação fazemos uso do CSS para remover as bordas do componente de Layout.
+
+{{{
+<style>
+
+.ui-layout-unit {
+	border: 0px !important;
+}
+
+</style>
+}}}
 Obs: 
  * Componentes do tipo menu obrigatoriamente devem está localizado dentro de um formulário para funcionar
  * Componentes do tipo butão obrigatoriamente também necessitam de um formulário para funcionar (Exceto quando o mesmo não fizer ação em um ManagedBean)
