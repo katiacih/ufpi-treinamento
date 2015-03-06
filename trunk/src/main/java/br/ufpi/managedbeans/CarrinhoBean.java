@@ -21,6 +21,8 @@ public class CarrinhoBean implements Serializable {
 
 	private List<ItemCompra> itemCarrinho;
 
+	private Produto produtoSelecionado;
+
 	public CarrinhoBean() {
 
 	}
@@ -62,12 +64,24 @@ public class CarrinhoBean implements Serializable {
 		incrementarProdutoNoCarrinho(produto);
 	}
 
+	public void remover(ItemCompra itemCompra) {
+		itemCarrinho.remove(itemCompra);
+	}
+
 	public List<ItemCompra> getItemCarrinho() {
 		return itemCarrinho;
 	}
 
 	public void setItemCarrinho(List<ItemCompra> itemCarrinho) {
 		this.itemCarrinho = itemCarrinho;
+	}
+
+	public Produto getProdutoSelecionado() {
+		return produtoSelecionado;
+	}
+
+	public void setProdutoSelecionado(Produto produtoSelecionado) {
+		this.produtoSelecionado = produtoSelecionado;
 	}
 
 }
