@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" template="index.xhtml">
+	
+	<ui:define name="centro">
+		<style>
+			.primeira-coluna {
+				width: 70%;
+			}
+			.segunda-coluna {
+				width: 30%;
+				display: inline;
+			}
+		</style>
+		<p:tabView style="min-height: 99%">
+			<p:tab title="Produtos">
+				<h:form>
+					<h:panelGrid columns="2" columnClasses="primeira-coluna, segunda-coluna" cellpadding="0" cellspacing="0">
+						<p:fieldset legend="Produtos Disponíveis">
+							<p:dataGrid id="produtosDisponiveis" var="produto"
+								value="#{produtoBean.produtos}" lazy="true" rows="12"
+								columns="4" paginator="true" paginatorPosition="bottom">
+								<p:panel id="pnl" header="#{produto.descricao}"
+									style="text-align:center">
+									<h:panelGrid columns="1" style="width:100%">
+										<p:graphicImage name="produto.png" width="70" height="60" />
+										<h:outputText value="#{produto.precoUnitario}">
+											<f:convertNumber pattern="R$ #,##0.00" />
+										</h:outputText>
+										<p:outputPanel>
+											<p:commandButton icon="ui-icon-plus"
+												action="#{carrinhoBean.adicionarNoCarrinho(produto)}"
+												title="Adicionar no carrinho"
+												update=":#{p:component('areaSelecao')}" />
+											<p:commandButton icon="ui-icon-search"
+												title="Detalhes do Produto" />
+										</p:outputPanel>
+									</h:panelGrid>
+								</p:panel>
+
+								<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"
+									stack=".ui-panel" proxy="true" />
+							</p:dataGrid>
+						</p:fieldset>
+
+						<p:fieldset id="produtoSelecionados"
+							legend="Produtos selecionados">
+							<p:outputPanel id="areaSelecao">
+								<p:dataTable value="#{carrinhoBean.itemCarrinho}"
+									var="itemCarrinho" emptyMessage="Nenhum produto no carrinho"
+									rows="5" paginator="true" paginatorPosition="bottom">
+									<p:column width="40">
+										<p:commandButton icon="ui-icon-trash" title="Remover item" />
+									</p:column>
+									<p:column headerText="Descrição">
+										<h:outputText value="#{itemCarrinho.produto.descricao}" />
+									</p:column>
+									<p:column headerText="Quantidade" width="100">
+										<p:inputText value="#{itemCarrinho.quantidade}"
+											style="width: 90px" />
+									</p:column>
+									<f:facet name="footer">
+										<p:commandButton value="Finalizar compra" icon="ui-icon-check" />
+									</f:facet>
+								</p:dataTable>
+
+							</p:outputPanel>
+						</p:fieldset>
+
+						<p:droppable for="produtoSelecionados" tolerance="touch"
+							activeStyleClass="ui-state-highlight"
+							datasource="produtosDisponiveis">
+							<p:ajax listener="#{carrinhoBean.quandoSelecionarUmProduto}"
+								update="areaSelecao produtosDisponiveis" />
+						</p:droppable>
+
+
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+
+</ui:composition>

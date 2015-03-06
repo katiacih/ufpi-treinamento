@@ -1,59 +1,48 @@
 package br.ufpi.managedbeans;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.primefaces.component.breadcrumb.BreadCrumb;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.MenuElement;
 
 import br.ufpi.ejbs.ProdutoEJB;
 import br.ufpi.entidades.Produto;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class ProdutoBean {
+public class ProdutoBean implements Serializable {
 
-	private DefaultMenuModel model;
+	private static final long serialVersionUID = 1L;
 
 	@PersistenceContext
 	private EntityManager em;
 
 	private LazyDataModel<Produto> produtos;
 
+	@Inject
 	private Produto produto;
 
-	@EJB
+	@Inject
 	private ProdutoEJB produtoEJB;
 
 	public ProdutoBean() {
 
 	}
 
-	public DefaultMenuModel getModel() {
-		return model;
-	}
-
-	public void setModel(DefaultMenuModel model) {
-		this.model = model;
-	}
-
 	@PostConstruct
 	public void postConstructor() {
-		model = new DefaultMenuModel();
 		produtos = new LazyDataModel<Produto>() {
 
 			private static final long serialVersionUID = 1L;
@@ -76,7 +65,6 @@ public class ProdutoBean {
 			}
 
 		};
-		cancelar();
 	}
 
 	public void remover(Produto produto) {
@@ -117,11 +105,6 @@ public class ProdutoBean {
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
-
-	public void test() {
-		MenuElement item = new DefaultMenuItem("Novo Item","ui-icon-pencil");
-		model.addElement(item);
 	}
 
 }

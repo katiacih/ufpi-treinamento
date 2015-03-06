@@ -3,6 +3,7 @@
  */
 package br.ufpi.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,12 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * @author Ronyerison
- *
- */
 @Entity
-public class Compra {
+public class Compra implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +33,8 @@ public class Compra {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
-	@OneToMany
-	private List<Produto> produtos;
+	@OneToMany(mappedBy = "compra")
+	private List<ItemCompra> produtos;
 
 	private String tipoPagamento;
 
@@ -59,11 +58,11 @@ public class Compra {
 		this.data = data;
 	}
 
-	public List<Produto> getProdutos() {
+	public List<ItemCompra> getProdutos() {
 		return produtos;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
+	public void setProdutos(List<ItemCompra> produtos) {
 		this.produtos = produtos;
 	}
 
