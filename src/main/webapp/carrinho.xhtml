@@ -3,21 +3,29 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core" template="index.xhtml">
-	
+
 	<ui:define name="centro">
 		<style>
-			.primeira-coluna {
-				width: 70%;
+.primeira-coluna {
+	width: 70%;
+}
+
+.segunda-coluna {
+	width: 30%;
+	display: inline;
+}
+</style>
+		<script>
+			function showDialog() {
+				PF('dialogo').show();
 			}
-			.segunda-coluna {
-				width: 30%;
-				display: inline;
-			}
-		</style>
+		</script>
 		<p:tabView style="min-height: 99%">
 			<p:tab title="Produtos">
 				<h:form>
-					<h:panelGrid columns="2" columnClasses="primeira-coluna, segunda-coluna" cellpadding="0" cellspacing="0">
+					<h:panelGrid columns="2"
+						columnClasses="primeira-coluna, segunda-coluna" cellpadding="0"
+						cellspacing="0">
 						<p:fieldset legend="Produtos Disponíveis">
 							<p:dataGrid id="produtosDisponiveis" var="produto"
 								value="#{produtoBean.produtos}" lazy="true" rows="12"
@@ -35,24 +43,49 @@
 												title="Adicionar no carrinho"
 												update=":#{p:component('areaSelecao')}" />
 											<p:commandButton icon="ui-icon-search"
-												title="Detalhes do Produto" />
+												title="Detalhes do Produto" oncomplete="showDialog()"
+												update=":#{p:component('dialog')}">
+												<f:setPropertyActionListener
+													target="#{carrinhoBean.produtoSelecionado}"
+													value="#{produto}" />
+											</p:commandButton>
 										</p:outputPanel>
 									</h:panelGrid>
 								</p:panel>
 
 								<p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar"
-									stack=".ui-panel" proxy="true" />
+									stack=".ui-panel" />
 							</p:dataGrid>
+							<p:dialog id="dialog" header="Detalhes do Produto"
+								widgetVar="dialogo" modal="true" appendTo="@(body)" width="400"
+								height="200" draggable="false">
+								<h:panelGrid columns="2">
+									<p:outputLabel for="id" value="Id" />
+									<h:outputText id="id"
+										value="#{carrinhoBean.produtoSelecionado.id}" />
+									<p:outputLabel for="descricao" value="Descrição" />
+									<h:outputText id="descricao"
+										value="#{carrinhoBean.produtoSelecionado.descricao}" />
+									<p:outputLabel for="preco" value="Preço" />
+									<h:outputText id="preco"
+										value="#{carrinhoBean.produtoSelecionado.precoUnitario}" />
+									<p:outputLabel for="tipo" value="Tipo" />
+									<h:outputText id="tipo"
+										value="#{carrinhoBean.produtoSelecionado.tipo}" />
+								</h:panelGrid>
+							</p:dialog>
 						</p:fieldset>
 
 						<p:fieldset id="produtoSelecionados"
 							legend="Produtos selecionados">
 							<p:outputPanel id="areaSelecao">
-								<p:dataTable value="#{carrinhoBean.itemCarrinho}"
+								<p:dataTable id="tabela" value="#{carrinhoBean.itemCarrinho}"
 									var="itemCarrinho" emptyMessage="Nenhum produto no carrinho"
 									rows="5" paginator="true" paginatorPosition="bottom">
 									<p:column width="40">
-										<p:commandButton icon="ui-icon-trash" title="Remover item" />
+										<p:commandButton icon="ui-icon-trash" title="Remover item"
+											action="#{carrinhoBean.remover(itemCarrinho)}"
+											update="tabela" />
 									</p:column>
 									<p:column headerText="Descrição">
 										<h:outputText value="#{itemCarrinho.produto.descricao}" />
