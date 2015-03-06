@@ -3,7 +3,7 @@
 
 =Bean Validations=
 
-As anotações estão presentes no pacote "javax.validation.constraints", e podem ser usadas para definir retrições nas entidades do sistema.
+As anotações estão presentes no pacote "javax.validation.constraints", e podem ser usadas para definir restrições nas entidades do sistema.
 
  * *@AssertFalse* => Deve ser falso
  * *@AssertTrue* => Deve ser verdadeiro
