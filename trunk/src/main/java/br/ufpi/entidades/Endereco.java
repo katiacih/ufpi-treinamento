@@ -1,13 +1,20 @@
 package br.ufpi.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String numero;
+
 	private String logradouro;
+
 	private String cep;
+
 	private String bairro;
 
 	public Endereco() {

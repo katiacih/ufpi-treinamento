@@ -5,7 +5,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
+	<title>Sistema de treinamento JAVAEE 7</title>
 	<style>
+* {
+	font-size: 11pt;
+}
+
 .ui-layout-north {
 	z-index: 20 !important;
 	overflow: visible !important;
@@ -18,6 +23,10 @@
 .ui-layout-unit {
 	border: 0px !important;
 }
+
+.ui-layout-south .ui-layout-unit-content {
+	overflow: hidden !important;
+}
 </style>
 </h:head>
 <h:body>
@@ -26,13 +35,21 @@
 		<p:layoutUnit position="north" size="65" minSize="40" maxSize="200">
 			<h:form>
 				<p:menubar>
-					<p:submenu label="Cadastros">
+					<p:submenu label="Cadastro" icon="ui-icon-disk">
 						<p:menuitem value="Produto" url="produto.xhtml" />
 						<p:menuitem value="Cliente" />
 					</p:submenu>
-					<p:submenu label="Relatorios">
+					<p:submenu label="Carrinho" icon="ui-icon-cart">
+						<p:menuitem value="Comprar" url="carrinho.xhtml" />
+					</p:submenu>
+					<p:submenu label="Relatorio" icon="ui-icon-suitcase">
 						<p:menuitem value="Clientes" />
-						<p:menuitem value="Quantidade Produtos" />
+						<p:menuitem value="Produtos" />
+						<p:menuitem value="Compras" />
+					</p:submenu>
+					<p:submenu label="#{usuarioBean.usuarioLogado.nome}"
+						style="float: right; font-weight: bold" icon="ui-icon-person">
+						<p:menuitem value="Sair" action="#{usuarioBean.fazerLogout}" />
 					</p:submenu>
 				</p:menubar>
 			</h:form>
@@ -43,9 +60,8 @@
 				Bem vindo
 			</ui:insert>
 		</p:layoutUnit>
-
-		<p:layoutUnit position="south" size="60">
-			<h:outputText value="Copyright 2015 - UFPI" />
+		<p:layoutUnit position="south" size="35" style="text-align: right; padding-right: 40px; font-weight: bold">
+			<h:outputText value="&#169; Copyright 2015 - UFPI" />
 		</p:layoutUnit>
 	</p:layout>
 </h:body>

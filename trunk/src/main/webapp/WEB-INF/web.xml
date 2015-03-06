@@ -28,4 +28,14 @@
 		<param-name>javax.faces.FACELETS_RESOURCE_RESOLVER</param-name>
 		<param-value>br.ufpi.extras.FilesystemResourceResolver</param-value>
 	</context-param>
+
+	<!-- modificando tema pradrão do primefaces -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>bootstrap</param-value>
+	</context-param>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
 </web-app>
