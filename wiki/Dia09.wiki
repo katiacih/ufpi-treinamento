@@ -250,7 +250,7 @@ Todos os escopo estão definidos no pacote javax.enterprise.context, então cuid
 ==Referências==
  * *Livro da Casa do Código:* CDI Integre as Dependencias E Contextos do Seu Codigo Java - Casa do Codigo
  * *CDI Básico:* http://blog.caelum.com.br/use-cdi-no-seu-proximo-projeto-java/
- *Injeção com CDI:* http://filipeferraz.com/?p=13
+ * *Injeção com CDI:* http://filipeferraz.com/?p=13
  *Slides de Resumo:* http://www.slideshare.net/mgraciano/introduo-a-cdi-e-como-utilizla-em-aplicaes-reais
  
 Obs: Por conta do escopo de visão ser uma novidade na API 1.2 do CDI, ele não está presente no mesmo pacote dos outros escopos. O pacote do escopo de visão é "javax.faces.view".
